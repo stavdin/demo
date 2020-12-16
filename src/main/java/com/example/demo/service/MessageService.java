@@ -20,4 +20,18 @@ public class MessageService {
         return save.getMessage();
     }
 
+    public String readMessage(Long id) {
+        Message read = repository.findById(id).get();
+        return read.getMessage();
+    }
+
+    public void deleteMessage(Long id) {
+        repository.deleteById(id);
+    }
+
+    public void updateMessage(Long id) {
+        Message message = repository.findById(id).get();
+        message.setMessage("Hi");
+        repository.save(message);
+    }
 }
